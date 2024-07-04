@@ -4,21 +4,8 @@ set -e
 # Different to release-pypi-win.cmd and release-pypi-osx.sh,
 # this script has to be ran from a clean dockerfile
 
-# Random note: The reason why this script is being ran from within a container
-# is to ensure glibc compatibility. From what I've seen so far, it appears
-# that having multiple glibc versions is a somewhat convoluted process
-# and I don't trust myself to be able to manage them well.
-
-# Download dependenciess
-export DEBIAN_FRONTEND=noninteractive
-apt update
-apt upgrade -y
-apt install -y g++ make curl
-
-cd /opt/OpenCC
-
 # Download and init conda
-MINICONDA_FILENAME=Miniconda3-latest-Linux-x86_64.sh
+MINICONDA_FILENAME=Miniconda3-latest-MacOSX-arm64.sh
 curl -L -o $MINICONDA_FILENAME \
     "https://repo.continuum.io/miniconda/$MINICONDA_FILENAME"
 bash ${MINICONDA_FILENAME} -b -f -p $HOME/miniconda3
@@ -33,9 +20,8 @@ for VERSION in 3.11 3.12; do
     conda activate py$VERSION
 
     # Build and package
-    pip install --no-cache-dir setuptools wheel cmake
-    python setup.py build_ext bdist_wheel \
-        --plat-name manylinux1_x86_64
+    pip install --no-cache-dir setuptools wheel
+    python setup.py build_ext bdist_wheel
 
     # Cleanup
     conda deactivate

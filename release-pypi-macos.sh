@@ -12,7 +12,7 @@ bash ${MINICONDA_FILENAME} -b -f -p $HOME/miniconda3
 export PATH=$HOME/miniconda3/bin:$PATH
 eval "$(conda shell.bash hook)"
 
-for VERSION in 3.8 3.9 3.10 3.11 3.12; do
+for VERSION in 3.11 3.12; do
     # Create and activate environment
     conda config --add channels conda-forge
     conda config --set channel_priority strict
@@ -30,7 +30,7 @@ done
 
 if [ "$1" != "testonly" ]; then
     # Upload to PyPI
-    conda activate py3.8
+    conda activate py3.11
     python -m pip install twine
     python -m twine upload dist/*
 fi

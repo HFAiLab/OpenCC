@@ -1,10 +1,7 @@
 name: Python CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  release
 
 jobs:
   unit-test:
@@ -12,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.9, '3.10', '3.11', '3.12']
+        python-version: ['3.11', '3.12']
 
     steps:
     - uses: actions/checkout@v2
@@ -56,6 +53,13 @@ jobs:
     - name: Build package and upload (macOS)
       if: runner.os == 'macOS'
       run: bash release-pypi-macos.sh testonly
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+
+    - name: Build package and upload (macOS arm64)
+      if: runner.os == 'macOS'
+      run: bash release-pypi-macos-arm.sh testonly
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}

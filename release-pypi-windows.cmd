@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-SET VERSIONS=3.8 3.9 3.10 3.11 3.12
+SET VERSIONS=3.11 3.12
 SET SOURCEDIR=%cd%
 
 REM Build packages
@@ -31,7 +31,7 @@ for %%v in (%VERSIONS%) do (
 
 if NOT "%~1"=="testonly" (
     REM Upload to PyPI
-    C:\Miniconda/condabin/conda.bat activate py3.8
+    C:\Miniconda/condabin/conda.bat activate py3.11
     python -m pip install twine
     python -m twine upload dist/*
 )

@@ -152,9 +152,9 @@ class BDistWheelCommand(wheel.bdist_wheel.bdist_wheel, object):
         if sys.platform == 'darwin':
             _, _, _, _, machine = os.uname()
             if machine == 'x86_64':
-                return 'macosx-10.9-{}'.format(machine)
+                return 'macosx-13-0-{}'.format(machine)
             if machine == 'arm64':
-                return 'macosx-11.0-{}'.format(machine)
+                return 'macosx-14-0-{}'.format(machine)
             else:
                 raise NotImplementedError
                 
@@ -173,24 +173,24 @@ class BDistWheelCommand(wheel.bdist_wheel.bdist_wheel, object):
         self.plat_name = self._determine_platform_tag()
 
 
-packages = ['opencc', 'opencc.clib']
+packages = ['ds-opencc', 'ds-opencc.clib']
 
 version_info = get_version_info()
 author_info = get_author_info()
 
 setuptools.setup(
-    name='OpenCC',
+    name='ds-opencc',
     version=version_info,
     author=author_info[0],
     author_email=author_info[1],
     description=" Conversion between Traditional and Simplified Chinese",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
-    url="https://github.com/BYVoid/OpenCC",
+    url="https://github.com/HFAiLab/OpenCC",
 
     packages=packages,
-    package_dir={'opencc': 'python/opencc'},
-    package_data={str('opencc'): [
+    package_dir={'ds-opencc': 'python/opencc'},
+    package_data={str('ds-opencc'): [
         'clib/opencc_clib*',
         'clib/share/opencc/*',
     ]},

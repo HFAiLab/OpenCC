@@ -7,7 +7,7 @@ jobs:
   release-pypi:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-13, macos-14, windows-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -22,8 +22,15 @@ jobs:
           ubuntu:22.04 /bin/bash /opt/OpenCC/release-pypi-linux.sh
 
     - name: Build package and upload (macOS)
-      if: runner.os == 'macOS'
+      if: runner.os == 'macOS' && runner.arch == 'x64'
       run: bash release-pypi-macos.sh
+      env:
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+
+    - name: Build package and upload (macOS arm64)
+      if: runner.os == 'macOS' && runner.arch == 'arm64'
+      run: bash release-pypi-macos-arm.sh
       env:
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}

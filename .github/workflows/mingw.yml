@@ -1,10 +1,7 @@
 name: mingw-w64 CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  release
 
 jobs:
   build:
