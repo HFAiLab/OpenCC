@@ -173,13 +173,13 @@ class BDistWheelCommand(wheel.bdist_wheel.bdist_wheel, object):
         self.plat_name = self._determine_platform_tag()
 
 
-packages = ['ds-opencc', 'ds-opencc.clib']
+packages = ['ds_opencc', 'ds_opencc.clib']
 
 version_info = get_version_info()
 author_info = get_author_info()
 
 setuptools.setup(
-    name='ds-opencc',
+    name='ds_opencc',
     version=version_info,
     author=author_info[0],
     author_email=author_info[1],
@@ -189,8 +189,8 @@ setuptools.setup(
     url="https://github.com/HFAiLab/OpenCC",
 
     packages=packages,
-    package_dir={'ds-opencc': 'python/opencc'},
-    package_data={str('ds-opencc'): [
+    package_dir={'ds_opencc': 'python/opencc'},
+    package_data={str('ds_opencc'): [
         'clib/opencc_clib*',
         'clib/share/opencc/*',
     ]},
