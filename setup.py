@@ -154,7 +154,7 @@ class BDistWheelCommand(wheel.bdist_wheel.bdist_wheel, object):
             if machine == 'x86_64':
                 return 'macosx-13-0-{}'.format(machine)
             if machine == 'arm64':
-                return 'macosx-14-0-{}'.format(machine)
+                return 'macosx-13-0-{}'.format(machine)
             else:
                 raise NotImplementedError
                 
