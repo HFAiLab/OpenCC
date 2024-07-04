@@ -1,5 +1,9 @@
 # Change History of OpenCC
 
+## Version 1.1.8
+
+增加了 macos arm64 包
+
 ## Version 1.1.7
 
 2023年10月15日
