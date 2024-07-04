@@ -8,6 +8,8 @@
 
 ## Introduction 介紹
 
+> 本 fork 在原仓库基础上添加了 MacOS arm64 架构的 wheel 包相关构建逻辑。
+
 ![OpenCC](https://opencc.byvoid.com/img/opencc.png)
 
 Open Chinese Convert (OpenCC, 開放中文轉換) is an opensource project for conversions between Traditional Chinese, Simplified Chinese and Japanese Kanji (Shinjitai). It supports character-level and phrase-level conversion, character variant conversion and regional idioms among Mainland China, Taiwan and Hong Kong. This is not translation tool between Mandarin and Cantonese, etc.
@@ -63,11 +65,11 @@ See [demo.js](https://github.com/BYVoid/OpenCC/blob/master/node/demo.js) and [ts
 
 ### Python
 
-[PyPI](https://pypi.org/project/OpenCC/) `pip install opencc` (Windows, Linux, Mac)
+[PyPI](https://pypi.org/project/OpenCC/) `pip install ds_opencc` (Windows, Linux, Mac)
 
 ```python
-import opencc
-converter = opencc.OpenCC('s2t.json')
+import ds_opencc
+converter = ds_opencc.OpenCC('s2t.json')
 converter.convert('汉字')  # 漢字
 ```
 
