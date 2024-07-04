@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import os
 import sys
 
-from opencc.clib import opencc_clib
+from ds_opencc.clib import opencc_clib
 
 __all__ = ['OpenCC', 'CONFIGS', '__version__']
 

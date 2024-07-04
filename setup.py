@@ -194,7 +194,7 @@ setuptools.setup(
         'clib/opencc_clib*',
         'clib/share/opencc/*',
     ]},
-    ext_modules=[OpenCCExtension('opencc.clib.opencc_clib', 'python')],
+    ext_modules=[OpenCCExtension('ds_opencc.clib.opencc_clib', 'python')],
     cmdclass={
         'build_ext': BuildExtCommand,
         'bdist_wheel': BDistWheelCommand

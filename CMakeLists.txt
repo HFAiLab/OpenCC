@@ -42,7 +42,7 @@ set (PACKAGE_URL https://github.com/HFAiLab/OpenCC)
 set (PACKAGE_BUGREPORT https://github.com/HFAiLab/OpenCC/issues)
 set (OPENCC_VERSION_MAJOR 1)
 set (OPENCC_VERSION_MINOR 1)
-set (OPENCC_VERSION_REVISION 9)
+set (OPENCC_VERSION_REVISION 10)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   set (version_suffix .Debug)
