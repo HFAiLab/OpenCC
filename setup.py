@@ -152,9 +152,9 @@ class BDistWheelCommand(wheel.bdist_wheel.bdist_wheel, object):
         if sys.platform == 'darwin':
             _, _, _, _, machine = os.uname()
             if machine == 'x86_64':
-                return 'macosx-13-0-{}'.format(machine)
+                return 'macosx-12-0-{}'.format(machine)
             if machine == 'arm64':
-                return 'macosx-13-0-{}'.format(machine)
+                return 'macosx-12-0-{}'.format(machine)
             else:
                 raise NotImplementedError
                 
