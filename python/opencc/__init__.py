@@ -11,7 +11,7 @@ __version__ = opencc_clib.__version__
 _thisdir = os.path.dirname(os.path.abspath(__file__))
 _opencc_share_dir = os.path.join(_thisdir, 'clib', 'share', 'opencc')
 
-if sys.version_info.major == 2:
+if sys.version_info < (3,):
     text_type = unicode  # noqa
 else:
     text_type = str
@@ -43,7 +43,7 @@ class OpenCC(opencc_clib._OpenCC):
         super(OpenCC, self).__init__(config)
         self.config = config
 
-    def convert(self, text):
+    def convert(self, text: str | bytes) -> str:
         if isinstance(text, text_type):
             text = text.encode('utf-8')
         return super(OpenCC, self).convert(text, len(text))

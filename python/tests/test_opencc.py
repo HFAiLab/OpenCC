@@ -9,24 +9,24 @@ _test_assets_dir = os.path.join(_opencc_rootdir, 'test', 'testcases')
 
 
 def test_import():
-    import opencc  # noqa
+    import ds_opencc  # noqa
 
 
 def test_init_delete_converter():
-    import opencc
+    import ds_opencc
 
-    for config in opencc.CONFIGS:
-        converter = opencc.OpenCC(config)
+    for config in ds_opencc.CONFIGS:
+        converter = ds_opencc.OpenCC(config)
         del converter
 
 
 def test_conversion():
-    import opencc
+    import ds_opencc
 
     for inpath in glob(os.path.join(_test_assets_dir, '*.in')):
         pref = os.path.splitext(inpath)[0]
         config = os.path.basename(pref)
-        converter = opencc.OpenCC(config)
+        converter = ds_opencc.OpenCC(config)
         anspath = '{}.{}'.format(pref, 'ans')
         assert os.path.isfile(anspath)
 
